@@ -57,7 +57,7 @@ SVROBJS = $(patsubst %,$(OBJ_DIR)/%,$(_SVROBJS))
 _CLIOBJS=cli-main.o cli-auth.o cli-authpasswd.o cli-kex.o \
 		cli-session.o cli-runopts.o cli-chansession.o \
 		cli-authpubkey.o cli-tcpfwd.o cli-channel.o cli-authinteract.o \
-		cli-agentfwd.o
+		cli-agentfwd.o cli-readconf.o
 CLIOBJS = $(patsubst %,$(OBJ_DIR)/%,$(_CLIOBJS))
 
 _CLISVROBJS=common-session.o packet.o common-algo.o common-kex.o \
@@ -295,7 +295,7 @@ check: lint
 # list of fuzz targets
 FUZZ_TARGETS=fuzzer-preauth fuzzer-pubkey fuzzer-verify fuzzer-preauth_nomaths \
 	fuzzer-kexdh fuzzer-kexecdh fuzzer-kexcurve25519 fuzzer-client fuzzer-client_nomaths \
-	fuzzer-postauth_nomaths
+	fuzzer-postauth_nomaths fuzzer-cliconf
 
 FUZZER_OPTIONS = $(addsuffix .options, $(FUZZ_TARGETS))
 FUZZ_OBJS = $(addprefix fuzz/,$(addsuffix .o,$(FUZZ_TARGETS))) \
